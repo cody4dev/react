@@ -678,7 +678,9 @@ function updateOffscreenComponent(
 
   if (
     nextProps.mode === 'hidden' ||
-    (enableLegacyHidden && nextProps.mode === 'unstable-defer-without-hiding')
+    (enableLegacyHidden &&
+      nextProps.mode === 'unstable-defer-without-hiding') ||
+    workInProgress.stateNode._isDetached
   ) {
     // Rendering a hidden tree.
 
@@ -836,6 +838,8 @@ function updateOffscreenComponent(
           pushTransition(workInProgress, null, null);
         }
       }
+
+      markRef(current, workInProgress);
 
       // We're about to bail out, but we need to push this to the stack anyway
       // to avoid a push/pop misalignment.
