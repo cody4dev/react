@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  *
  * @flow
+ * @author Cody Dev
  */
 
 import ReactVersion from 'shared/ReactVersion';
